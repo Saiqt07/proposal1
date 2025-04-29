@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - Digital Wellness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .gallery-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 300px;
+            position: relative;
+        }
+        
+        .gallery-item a {
+            display: block;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            text-decoration: none;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(109, 89, 122, 0.8);
+            color: white;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .gallery-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .category-btn {
+            background-color: #EAE0D5;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #355070;
+            font-weight: 500;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background-color: #6D597A;
+            color: white;
+        }
+        
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.jpg" alt="Digital Wellness Logo" class="logo-icon" style="width: 36px; height: 36px;">
+                <span class="logo-text">Digital Wellness</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-home"></i></span>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="resources.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-book"></i></span>
+                        Resources
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="aboutus.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-users"></i></span>
+                        About Us
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="gallery.html" class="nav-link active">
+                        <span class="nav-icon"><i class="fas fa-images"></i></span>
+                        Photo Gallery
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="author.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-user-edit"></i></span>
+                        About the Author
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="contacts.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-envelope"></i></span>
+                        Contact Us
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="content">
+        <div class="container">
+            <section class="intro">
+                <h2>Digital Wellness Photo Gallery</h2>
+                <p>Explore our collection of team photos, events, and digital wellness concepts. These images showcase our journey in promoting healthy tech habits and digital wellbeing.</p>
+            </section>
+
+            <section class="gallery-container">
+                <div class="gallery-categories">
+                    <button class="category-btn active" data-category="all">All Photos</button>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="team">
+                        <a href="pictures/cyrus.jpg" target="pic">
+                            <img src="pictures/cyrus.jpg" alt="Cyrus Luigi Cabero">
+                            <div class="gallery-caption">Cyrus Luigi Cabero - Team Leader</div>
+                        </a>
+                    </div>
+                    <div class="gallery-item" data-category="team">
+                        <a href="pictures/nicolle.jpg" target="_blank">
+                            <img src="pictures/nicolle.jpg" alt="Nicole Menidola">
+                            <div class="gallery-caption">Nicole Menidola</div>
+                        </a>
+                    </div>
+                    <div class="gallery-item" data-category="team">
+                        <a href="pictures/clint.jpg" target="pic">
+                            <img src="pictures/clint.jpg" alt="Clint Reyes">
+                            <div class="gallery-caption">Clint Reyes</div>
+                        </a>
+                    </div>
+                    <div class="gallery-item" data-category="team">
+                        <a href="pictures/valiao.jpg" target="pic">
+                            <img src="pictures/valiao.jpg" alt="Joaquin Valiao">
+                            <div class="gallery-caption">Joaquin Valiao</div>
+                        </a>    
+                    </div>
+                    <div class="gallery-item" data-category="team">
+                        <a href="pictures/zed.jpg" target="pic">
+                            <img src="pictures/zed.jpg" alt="Zedrick Roldan">
+                            <div class="gallery-caption">Zedrick Roldan</div>
+                        </a>
+                    </div>
+                    <div class="gallery-item" data-category="team">
+                        <a href="pictures/sean.jpg" target="pic">
+                            <img src="pictures/sean.jpg" alt="Sean Bumanlag">
+                            <div class="gallery-caption">Sean Bumanlag</div>
+                        </a>
+                    </div>
+                    <div class="gallery-item" data-category="team">
+                        <a href="pictures/vargas.jpg" target="pic">
+                            <img src="pictures/vargas.jpg" alt="Johanne Vargas">
+                            <div class="gallery-caption">Johanne Vargas</div>
+                        </a>
+                    </div>
+                    <div class="gallery-item" data-category="team">
+                        <a href="pictures/camaymayan.jpg" target="pic">
+                            <img src="pictures/camaymayan.jpg" alt="Xjhann Camaymayan">
+                            <div class="gallery-caption">Xjhann Camaymayan</div>
+                        </a>
+                    </div>
+                    <div class="gallery-item" data-category="team">
+                        <a href="pictures/clark.jpg" target="pic">
+                            <img src="pictures/clark.jpg" alt="Clark Balang">
+                            <div class="gallery-caption">Clark Balang</div>
+                        </a>
+                    </div>
+                    <div class="gallery-item" data-category="team">
+                        <a href="pictures/tancio.jpg" target="pic">
+                            <img src="pictures/tancio.jpg" alt="Kurt Tancio">
+                            <div class="gallery-caption">Kurt Tancio</div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img src="" alt="Enlarged photo">
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="team-members">
+                <div class="member">Balang, Clark</div>
+                <div class="member">Bumanlag, Sean</div>
+                <div class="member leader">Cabero, Cyrus Luigi</div>
+                <div class="member">Camaymayan, Xjhann</div>
+                <div class="member">Menidola, Nicole</div>
+                <div class="member">Reyes, Clint</div>
+                <div class="member">Roldan, Zedrick</div>
+                <div class="member">Tancio, Kurt</div>
+                <div class="member">Valiao, Joaquin</div>
+                <div class="member">Vargas, Johanne</div>
+            </div>
+        </div>
+    </footer>
+    <a href="#top" class="go-top-btn">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+</body>
+</html>

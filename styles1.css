@@ -15,7 +15,6 @@ body {
     min-height: 100vh;
 }
 
-/* Enhanced Navigation Bar */
 .main-nav {
     background-color: #6D597A;
     background-image: linear-gradient(to right, #6D597A, #7D6989);
@@ -164,7 +163,6 @@ body {
     color: white;
     padding: 4rem 0;
     text-align: center;
-    border-bottom: 8px solid #355070;
 }
 
 .header-content {
@@ -193,10 +191,6 @@ body {
     padding: 0 24px;
 }
 
-.container {
-    width: 100%;
-}
-
 .intro {
     background-color: white;
     padding: 2rem;
@@ -214,141 +208,47 @@ h2 {
     padding-bottom: 0.5rem;
 }
 
-p {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    color: #355070;
-}
-
-/* Wellness Image Styles */
-.wellness-image-container {
-    margin: 30px 0;
-    text-align: center;
-}
-
-.wellness-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.wellness-image:hover {
-    transform: scale(1.02);
-}
-
-.image-caption {
-    font-size: 0.9rem;
-    color: #64748B;
-    margin-top: 8px;
-    font-style: italic;
-}
-
-/* Topic Grid Styling */
+/* Team Grid */
 .topics-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Display 5 cards per row */
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
-    margin: 30px 0 50px;
-    width: 100%;
+    margin-top: 2rem;
 }
 
 .topic-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background-color: white;
+    border-radius: 10px;
     overflow: hidden;
-    transition: all 0.3s ease;
     text-decoration: none;
-    color: inherit;
-    display: block;
-    position: relative;
-    height: 100%;
-    border: 1px solid #eaeaea;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
 
 .topic-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
 }
 
-.topic-number {
-    background-color: #34495e;
-    color: white;
-    font-weight: bold;
-    padding: 6px 12px;
-    font-size: 16px;
-    position: absolute;
-    top: 0;
-    left: 0;
+.wellness-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid #B56576;
 }
 
 .topic-content {
-    padding: 20px 15px 15px;
-    margin-top: 10px;
+    padding: 1rem;
 }
 
 .topic-title {
-    color: #5d4777;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    font-size: 18px;
-    font-weight: 600;
+    color: #6D597A;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
 }
 
 .topic-desc {
-    color: #555;
-    line-height: 1.5;
-    font-size: 14px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-    .topics-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 cards per row on medium screens */
-    }
-}
-
-@media (max-width: 992px) {
-    .topics-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 cards per row on smaller screens */
-    }
-}
-
-@media (max-width: 768px) {
-    .topics-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on tablets */
-    }
-}
-
-@media (max-width: 480px) {
-    .topics-grid {
-        grid-template-columns: 1fr; /* 1 card per row on mobile */
-    }
-}
-
-/* Container styling to allow for wider content */
-.container {
-    width: 95%;
-    max-width: 1400px; /* Increased from typical 1200px */
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-.learn-more {
-    display: inline-block;
-    background-color: #B56576;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.learn-more:hover {
-    background-color: #6D597A;
+    color: #355070;
+    font-size: 0.9rem;
 }
 
 /* Footer */
@@ -397,84 +297,44 @@ footer {
     color: #CBD5E1;
 }
 
+
 /* Responsive Design */
-@media (max-width: 1024px) {
-    .nav-container {
-        padding: 0 16px;
+@media (max-width: 1200px) {
+    .topics-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
-    
-    .nav-links {
-        gap: 2px;
-    }
-    
-    .nav-link {
-        padding: 12px 14px;
-        font-size: 0.8125rem;
+}
+
+@media (max-width: 992px) {
+    .topics-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    .main-nav {
-        height: 65px;
+    .topics-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
     
-    .nav-container {
-        padding: 0 15px;
-    }
-    
-    .nav-links {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding: 0 5px;
-        gap: 5px;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE and Edge */
-    }
-    
-    .nav-links::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .nav-link {
-        padding: 10px 14px;
-        font-size: 0.85rem;
-        height: 40px;
-        border-radius: 4px;
-    }
-    
-    .nav-link.active::after {
-        left: 5px;
-        right: 5px;
-    }
-
     .main-header h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
+}
 
-    .logo-text {
-        display: none;
-    }
-
+@media (max-width: 480px) {
     .topics-grid {
         grid-template-columns: 1fr;
     }
     
-    .wellness-image-container {
-        margin: 20px 0;
+    .nav-container {
+        padding: 0 12px;
+    }
+    
+    .logo-text {
+        display: none;
     }
 }
 
-.topic-card {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.topic-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
 .go-top-btn {
     position: fixed;
     bottom: 30px;
